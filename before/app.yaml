@@ -1,0 +1,26 @@
+apiVersion: v1
+data:
+  nginx.conf: |
+    http {
+      server {
+        listen 8080;
+      }
+    }
+kind: ConfigMap
+metadata:
+  annotations:
+    app: example
+  name: example-configmap-1-bkc987k9f6
+  namespace: default
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  annotations:
+    app: example
+  name: example
+  namespace: default
+spec:
+  containers:
+  - image: nginx
+    name: nginx

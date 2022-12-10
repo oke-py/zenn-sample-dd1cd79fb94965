@@ -1,0 +1,10 @@
+namespace: default
+commonAnnotations:
+  app: example
+
+resources:
+- pod.yaml
+configMapGenerator:
+- name: example-configmap-1
+  files:
+  - nginx.conf
