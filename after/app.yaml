@@ -1,16 +1,11 @@
 apiVersion: v1
 data:
-  nginx.conf: |
-    http {
-      server {
-        listen 8081;
-      }
-    }
+  FOO: baz
 kind: ConfigMap
 metadata:
   annotations:
     app: example
-  name: example-configmap-1-f84h5gtdk9
+  name: example-configmap-1-286h7kfc5k
   namespace: default
 ---
 apiVersion: v1
@@ -22,5 +17,11 @@ metadata:
   namespace: default
 spec:
   containers:
-  - image: nginx
+  - env:
+    - name: FOO
+      valueFrom:
+        configMapKeyRef:
+          key: FOO
+          name: example-configmap-1-286h7kfc5k
+    image: nginx
     name: nginx

@@ -6,5 +6,5 @@ resources:
 - pod.yaml
 configMapGenerator:
 - name: example-configmap-1
-  files:
-  - nginx.conf
+  literals:
+  - FOO=bar
